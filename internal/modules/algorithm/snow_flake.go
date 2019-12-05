@@ -17,7 +17,7 @@ const (
 var decodeBase32Map [256]byte
 var decodeBase58Map [256]byte
 
-func init() {
+func RegisterSnowflake() {
 	for i := 0; i < len(encodeBase58Map); i++ {
 		decodeBase58Map[i] = 0xFF
 	}
