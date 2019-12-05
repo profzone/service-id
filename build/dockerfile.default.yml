@@ -1,0 +1,21 @@
+from: ${PROFZONE_DOCKER_REGISTRY}/profzone/golang:runtime
+image: ${PROFZONE_DOCKER_REGISTRY}/${PROJECT_GROUP}/${PROJECT_NAME}:${PROJECT_VERSION}
+workdir: /go/bin
+env:
+  GOENV: DEV
+  SERVICE_ID_GENERATEALGORITHM: SNOWFLAKE
+  SERVICE_ID_SNOWFLAKECONFIG_EPOCH: "1288351723598"
+  SERVICE_ID_SNOWFLAKECONFIG_NODEBITS: "10"
+  SERVICE_ID_SNOWFLAKECONFIG_NODEID: "1"
+  SERVICE_ID_SNOWFLAKECONFIG_STEPBITS: "12"
+add:
+  ./api/api.json: ./
+  ./build/service-id: ./
+  ./configs: ./configs
+  ./profzone.yml: ./
+expose:
+- "80"
+cmd:
+- ./service-id
+- -d=false
+- -m=false
