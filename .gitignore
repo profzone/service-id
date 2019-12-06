@@ -1,3 +1,5 @@
 .idea
 go.sum
 api/api.json
+build/service-id
+build/Dockerfile
